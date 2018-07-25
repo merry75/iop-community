@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import classnames from "classnames";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authAction";
 
 class Register extends Component {
   constructor() {
@@ -15,6 +18,22 @@ class Register extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  //this way we get our errors from redux state
+  //then errors are put to props from the function below mapstatetoprops
+  //then once we receive new props, if error is included we set it to the component state
+  //so we dont have to change anything with our errors bject component
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange(e) {
@@ -32,18 +51,18 @@ class Register extends Component {
     };
     //console.log(newUser);
 
-    axios
-      .post("api/users/register", newUser)
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({ errors: err.response.data }));
+    this.props.registerUser(newUser, this.props.history);
   }
 
   render() {
     //destructuring same thing than const errors = this.state.errors
     const { errors } = this.state;
 
+    // const { user } = this.props.auth;
+
     return (
       <div className="register">
+        {/* {user ? user.name : null} */}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -128,4 +147,18 @@ class Register extends Component {
   }
 }
 
-export default Register;
+Register.proptypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
