@@ -37,3 +37,20 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+a:link {
+  color: #bbb;
+  text-decoration: none;
+}
+a:visited {
+  color: #bbb;
+  text-decoration: none;
+}
+a:hover {
+  color: #bbb;
+  text-decoration: none;
+}
+a:active {
+  color: #bbb;
+  text-decoration: none;
+}
