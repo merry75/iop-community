@@ -38,7 +38,7 @@ img {
   color: #bbb !important;
 }
 
-a:link {
+/* a:link {
   color: #bbb;
   text-decoration: none;
 }
@@ -53,4 +53,4 @@ a:hover {
 a:active {
   color: #bbb;
   text-decoration: none;
-}
+} */
