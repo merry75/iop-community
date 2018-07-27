@@ -40,6 +40,25 @@ router.get(
   }
 );
 
+// @route   GET api/profile/all
+// @desc    Get all profiles
+// @access  Public
+router.get("/all", (req, res) => {
+  const errors = {};
+
+  Profile.find()
+    .populate("user", ["name", "avatar"])
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofile = "There are no profiles";
+        return res.status(404).json(errors);
+      }
+
+      res.json(profiles);
+    })
+    .catch(err => res.status(404).json({ profile: "There are no profiles" }));
+});
+
 // @route         Get api/profile/handle/:handle
 // @description   Get profile by handle
 // @access        Public
@@ -100,7 +119,7 @@ router.post(
     if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.company) profileFields.company = req.body.company;
     if (req.body.website) profileFields.website = req.body.website;
-    if (req.body.location) profileFields.location = req.body.handle;
+    if (req.body.location) profileFields.location = req.body.location;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
     if (req.body.githubusername)
