@@ -1,7 +1,7 @@
 {
-  "name": "mernapp",
+  "name": "iop-connect",
   "version": "1.0.0",
-  "description": "social app",
+  "description": "IoP-Connect app built with MERN Stack",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/merry75/mern-social-app.git"
+    "url": "git+https://github.com/merry75/IoP-Connect.git"
   },
   "author": "ben a",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/merry75/mern-social-app/issues"
+    "url": "https://github.com/merry75/IoP-Connect/issues"
   },
-  "homepage": "https://github.com/merry75/mern-social-app#readme",
+  "homepage": "https://github.com/merry75/IoP-Connect#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

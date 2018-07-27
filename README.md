@@ -4,7 +4,7 @@ npm install
 
 # Launch
 
-npm start (go to localhost:5000 by default).
+npm start
 
 #Dev
-npm run server
+npm run server (go to localhost:3000 by default).
