@@ -42,7 +42,7 @@ class Dashboard extends Component {
                 onClick={this.onDeleteClick.bind(this)}
                 className="btn btn-danger"
               >
-                Delete My Profile
+                Delete My Account
               </button>
             </div>
           </div>
